@@ -5,12 +5,15 @@
 
 To represent a Shopping Mall Service Robot problem as a Markov Decision Process (MDP) by defining its states, actions, transition probabilities, reward function, and implementing the model using Python dictionaries.
 
+
 # Problem Statement
+
 ## Problem Description
 
 A shopping mall uses an autonomous service robot to guide customers to their desired locations. The robot starts at the mall entrance and moves through different areas such as the food court, clothing store, and escalator to reach the customer's current location.
 
 The robot must choose the correct direction at every step. If it reaches the customer, it receives a high reward. If it moves in the wrong direction, it receives a penalty. The objective of the robot is to learn the shortest and safest path to the customer.
+
 
 ## MDP Components
 
@@ -24,6 +27,7 @@ P	Transition Probability
 R	Reward Function
 γ	Discount Factor
 
+
 ## State Space
 
 The robot can be in one of the following locations:
@@ -36,10 +40,12 @@ S = {
     Customer Location
 }
 
+
 ## Sample State
 Current State = Food Court
 
 The robot is currently standing at the food court.
+
 
 ## Action Space
 
@@ -52,10 +58,12 @@ A = {
     Stop
 }
 
+
 ## Sample Action
 Action = Move Forward
 
 The robot moves from the Food Court toward the Clothing Store.
+
 
 ## Transition Probability
 
@@ -72,6 +80,8 @@ From Food Court → Move Right → Clothing Store (Probability = 1.0)
 From Clothing Store → Move Forward → Customer Location (Probability = 1.0)
 
 Since the environment is deterministic, every valid action always leads to the expected next state.
+
+
 
 ## Reward Function
 
@@ -91,6 +101,7 @@ Stay Without Progress	-2
 
 The robot learns to maximize the total reward while minimizing unnecessary movements.
 
+
 ## Graphical Representation
                  +10
 Entrance ----------------> Food Court
@@ -109,6 +120,7 @@ Entrance ----------------> Food Court
 
 Wrong Direction = -5
 Stay Idle = -2
+
 
 
 ---
@@ -187,12 +199,16 @@ print("\nDiscount Factor:", discount_factor)
 
 ```
 ---
+
+
 ## Output
 <img width="1047" height="557" alt="image" src="https://github.com/user-attachments/assets/2a85b703-23c9-467c-b1b7-a5affd896eef" />
 
 
 
 ---
+
+
 
 ## Result
 
