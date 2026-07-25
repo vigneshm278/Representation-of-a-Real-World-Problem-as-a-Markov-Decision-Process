@@ -103,6 +103,8 @@ The robot learns to maximize the total reward while minimizing unnecessary movem
 
 
 ## Graphical Representation
+
+```
                  +10
 Entrance ----------------> Food Court
                               |
@@ -121,7 +123,7 @@ Entrance ----------------> Food Court
 Wrong Direction = -5
 Stay Idle = -2
 
-
+```
 
 ---
 
