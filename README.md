@@ -1,12 +1,12 @@
 # Representation-of-a-Real-World-Problem-as-a-Markov-Decision-Process
 
 
-## Aim
+# Aim
 
 To represent a Shopping Mall Service Robot problem as a Markov Decision Process (MDP) by defining its states, actions, transition probabilities, reward function, and implementing the model using Python dictionaries.
 
-## Problem Statement
-# Problem Description
+# Problem Statement
+## Problem Description
 
 A shopping mall uses an autonomous service robot to guide customers to their desired locations. The robot starts at the mall entrance and moves through different areas such as the food court, clothing store, and escalator to reach the customer's current location.
 
