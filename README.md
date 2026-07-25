@@ -16,7 +16,7 @@ The robot must choose the correct direction at every step. If it reaches the cus
 
 
 ## MDP Components
-
+```
 The Markov Decision Process is represented as
 
 MDP=(S,A,P,R,γ)
@@ -26,10 +26,10 @@ A	Set of Actions
 P	Transition Probability
 R	Reward Function
 γ	Discount Factor
-
+```
 
 ## State Space
-
+```
 The robot can be in one of the following locations:
 
 S = {
@@ -40,15 +40,17 @@ S = {
     Customer Location
 }
 
+```
 
 ## Sample State
+```
 Current State = Food Court
 
 The robot is currently standing at the food court.
-
+```
 
 ## Action Space
-
+```
 The robot can perform the following actions:
 
 A = {
@@ -58,15 +60,16 @@ A = {
     Stop
 }
 
-
+```
 ## Sample Action
+```
 Action = Move Forward
 
 The robot moves from the Food Court toward the Clothing Store.
-
+```
 
 ## Transition Probability
-
+```
 The transition probability determines the likelihood of reaching the next state after performing an action.
 
 P(s
@@ -82,9 +85,9 @@ From Clothing Store → Move Forward → Customer Location (Probability = 1.0)
 Since the environment is deterministic, every valid action always leads to the expected next state.
 
 
-
+```
 ## Reward Function
-
+```
 The reward function is
 
 R(s,a,s
@@ -100,7 +103,7 @@ Wrong Direction	-5
 Stay Without Progress	-2
 
 The robot learns to maximize the total reward while minimizing unnecessary movements.
-
+```
 
 ## Graphical Representation
 
@@ -129,9 +132,6 @@ Stay Idle = -2
 
 ## Python Representation
 
-Write your code here.
-
-Use Python dictionaries to represent the MDP.
 
 
 ```python# MDP Representation using Python
