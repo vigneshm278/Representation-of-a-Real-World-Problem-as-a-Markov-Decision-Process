@@ -3,153 +3,112 @@
 
 ## Aim
 
-Write your aim here.
-
-Example:
-
-> To identify a real-world sequential decision-making problem and represent it formally as a Markov Decision Process by defining its states, actions, rewards, transitions, and Python representation.
-
----
+To represent a Shopping Mall Service Robot problem as a Markov Decision Process (MDP) by defining its states, actions, transition probabilities, reward function, and implementing the model using Python dictionaries.
 
 ## Problem Statement
+# Problem Description
 
-### Problem Description
+A shopping mall uses an autonomous service robot to guide customers to their desired locations. The robot starts at the mall entrance and moves through different areas such as the food court, clothing store, and escalator to reach the customer's current location.
 
-Write your answer here.
-
-Describe the real-world application that you selected.
-
-
----
+The robot must choose the correct direction at every step. If it reaches the customer, it receives a high reward. If it moves in the wrong direction, it receives a penalty. The objective of the robot is to learn the shortest and safest path to the customer.
 
 ## MDP Components
 
-A Markov Decision Process is represented as:
+The Markov Decision Process is represented as
 
-$$
-MDP = (S, A, P, R, \gamma)
-$$
-
-Where:
-
-| Symbol | Meaning |
-|---|---|
-| $S$ | Set of states |
-| $A$ | Set of actions |
-| $P$ | Transition probability function |
-| $R$ | Reward function |
-| $\gamma$ | Discount factor |
-
----
+MDP=(S,A,P,R,γ)
+Symbol	Meaning
+S	Set of States
+A	Set of Actions
+P	Transition Probability
+R	Reward Function
+γ	Discount Factor
 
 ## State Space
 
-Write your answer here.
+The robot can be in one of the following locations:
 
-The state space should list all possible situations in which the agent can exist.
-
-Example format:
-
-```text
 S = {
-    State 1,
-    State 2,
-    State 3,
-    ...
+    Entrance,
+    Food Court,
+    Clothing Store,
+    Escalator,
+    Customer Location
 }
-```
-
-
-
----
 
 ## Sample State
+Current State = Food Court
 
-Write your answer here.
-
-A sample state is one specific example from the state space.
-
-
-
----
+The robot is currently standing at the food court.
 
 ## Action Space
 
-Write your answer here.
+The robot can perform the following actions:
 
-The action space should list all possible actions available to the agent.
-
-Example format:
-
-```text
 A = {
-    Action 1,
-    Action 2,
-    Action 3,
-    ...
+    Move Left,
+    Move Right,
+    Move Forward,
+    Stop
 }
-```
-
-
----
 
 ## Sample Action
+Action = Move Forward
 
-Write your answer here.
-
-A sample action is one action selected from the action space.
-
-
-
----
+The robot moves from the Food Court toward the Clothing Store.
 
 ## Transition Probability
 
-Write your answer here.
+The transition probability determines the likelihood of reaching the next state after performing an action.
 
-The transition probability explains how the environment moves from one state to another after an action is taken.
+P(s
+′
+∣s,a)
 
-General form:
+Example:
 
-$$
-P(s' \mid s,a)
-$$
+From Entrance → Move Forward → Food Court (Probability = 1.0)
+From Food Court → Move Right → Clothing Store (Probability = 1.0)
+From Clothing Store → Move Forward → Customer Location (Probability = 1.0)
 
-This means:
-
-> Probability of reaching next state $s'$ after taking action $a$ in current state $s$.
-
-
----
+Since the environment is deterministic, every valid action always leads to the expected next state.
 
 ## Reward Function
 
-Write your answer here.
+The reward function is
 
-The reward function defines the feedback received by the agent after taking an action.
+R(s,a,s
+′
+)
 
-General form:
+Reward values:
 
-$$
-R(s,a,s')
-$$
+Situation	Reward
+Reach Customer	+100
+Move in Correct Direction	+10
+Wrong Direction	-5
+Stay Without Progress	-2
 
-
-
----
+The robot learns to maximize the total reward while minimizing unnecessary movements.
 
 ## Graphical Representation
+                 +10
+Entrance ----------------> Food Court
+                              |
+                              | +10
+                              V
+                      Clothing Store
+                              |
+                              | +10
+                              V
+                        Escalator
+                              |
+                              | +100
+                              V
+                    Customer Location (Goal)
 
-Write your answer here.
-
-Draw the MDP graph.
-
-The graph should include:
-
-1. States as nodes.
-2. Actions as arrows.
-3. Rewards on transitions.
-4. Transition probabilities if applicable.
+Wrong Direction = -5
+Stay Idle = -2
 
 
 ---
@@ -161,23 +120,83 @@ Write your code here.
 Use Python dictionaries to represent the MDP.
 
 
-```python
-# MDP Representation using Python
-# print("Name:       ")
-# print("Register Number:     ")
+```python# MDP Representation using Python
+
+print("Name: Vigensh M")
+print("Register Number: 212223240176")
+
+states = [
+    "Entrance",
+    "Food Court",
+    "Clothing Store",
+    "Escalator",
+    "Customer Location"
+]
+
+actions = [
+    "Move Left",
+    "Move Right",
+    "Move Forward",
+    "Stop"
+]
+
+transitions = {
+    "Entrance": {
+        "Move Forward": "Food Court"
+    },
+    "Food Court": {
+        "Move Right": "Clothing Store"
+    },
+    "Clothing Store": {
+        "Move Forward": "Escalator"
+    },
+    "Escalator": {
+        "Move Forward": "Customer Location"
+    },
+    "Customer Location": {
+        "Stop": "Customer Location"
+    }
+}
+
+rewards = {
+    ("Entrance", "Move Forward"): 10,
+    ("Food Court", "Move Right"): 10,
+    ("Clothing Store", "Move Forward"): 10,
+    ("Escalator", "Move Forward"): 100,
+    ("Wrong Direction"): -5,
+    ("Stop"): -2
+}
+
+discount_factor = 0.9
+
+print("\nStates:")
+print(states)
+
+print("\nActions:")
+print(actions)
+
+print("\nTransitions:")
+for state, action in transitions.items():
+    print(state, "->", action)
+
+print("\nRewards:")
+for reward in rewards.items():
+    print(reward)
+
+print("\nDiscount Factor:", discount_factor)
 
 ```
 ---
 ## Output
+<img width="1047" height="557" alt="image" src="https://github.com/user-attachments/assets/2a85b703-23c9-467c-b1b7-a5affd896eef" />
 
-Write your Python output here.
 
 
 ---
 
 ## Result
 
-Write your result here.
+Thus, the Shopping Mall Robot problem was successfully represented as a Markov Decision Process (MDP) using states, actions, transitions, rewards, and Python.
 
 
 
